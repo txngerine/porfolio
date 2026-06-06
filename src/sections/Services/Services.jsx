@@ -7,22 +7,22 @@ const services = [
   {
     title: 'Strategy',
     number: '01',
-    items: ['Discovery', 'Research', 'Analysis', 'Consultation', 'Optimization']
+    items: ['Product Discovery', 'Technical Consultation', 'Requirements Analysis', 'Architecture Planning', 'Optimization']
   },
   {
-    title: 'Design',
+    title: 'Design & Experience',
     number: '02',
-    items: ['Branding', 'UI/UX', 'Visual Identity', 'Graphics', 'Illustration']
+    items: ['UI/UX Implementation', 'Design Systems', 'Responsive Interfaces', 'User Flows', 'Micro-interactions']
   },
   {
     title: 'Development',
     number: '03',
-    items: ['Frontend', 'Framer', 'API Integration', 'Testing', 'Deployment']
+    items: ['Flutter', 'MERN Stack', 'REST APIs', 'Firebase', 'Backend Development', 'Testing']
   },
   {
-    title: 'Production',
+    title: 'Deployment & Growth',
     number: '04',
-    items: ['3D modeling', 'VR Experiences', 'Visualization', 'Motion Graphics', 'Animations']
+    items: ['Cloud Infrastructure', 'App Store Publishing', 'CI/CD', 'Monitoring', 'Maintenance', 'Scaling']
   }
 ];
 
