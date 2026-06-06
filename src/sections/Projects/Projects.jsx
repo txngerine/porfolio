@@ -5,26 +5,26 @@ import SplitText from '../../components/Shared/SplitText';
 
 const projects = [
   {
-    title: 'Electric Car',
-    categories: ['UIUX Design', 'Branding'],
-    image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=1200&auto=format&fit=crop',
-    link: '#'
-  },
-  {
-    title: 'Immersive VR',
-    categories: ['Product', 'Branding'],
-    image: 'https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?q=80&w=1200&auto=format&fit=crop',
-    link: '#'
-  },
-  {
-    title: 'VaultX',
-    categories: ['UIUX', 'Framer Development'],
+    title: 'NTunes',
+    categories: ['Flutter', 'Music Streaming', 'Nothing OS Inspired UI'],
     image: 'https://images.unsplash.com/photo-1614064016629-28c92850937a?q=80&w=1200&auto=format&fit=crop',
     link: '#'
   },
   {
-    title: 'Glidex',
-    categories: ['UIUX', 'Framer Development'],
+    title: 'AttendGo',
+    categories: ['Flutter', 'Attendance Management', 'Firebase'],
+    image: 'https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=1200&auto=format&fit=crop',
+    link: '#'
+  },
+  {
+    title: 'Korlinks',
+    categories: ['Flutter', 'Business Networking Platform', 'API Integration'],
+    image: 'https://images.unsplash.com/photo-1622979135225-d2ba269cf1ac?q=80&w=1200&auto=format&fit=crop',
+    link: '#'
+  },
+  {
+    title: 'PinWalls',
+    categories: ['Flutter', 'Social Platform', 'Firebase'],
     image: 'https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1200&auto=format&fit=crop',
     link: '#'
   }
