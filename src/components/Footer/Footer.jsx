@@ -8,12 +8,10 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-start">
           <div className="flex-1 mb-8 md:mb-0">
             <p className="text-[0.8rem] md:text-[1rem] leading-[1.2] tracking-[0.05rem] uppercase font-light">
-              Prinsengracht 123, <br/>
-              1016 GV Amsterdam, <br/>
-              The Netherlands
+              Based in India
             </p>
             <a href="mailto:hello@kaeldonovan.com" className="block mt-3 md:mt-4 text-[0.7rem] tracking-[0.1rem] uppercase w-fit hover:text-[var(--brand)] transition-colors duration-700">
-              hello@kaeldonovan.com
+              akshayts@example.com
             </a>
           </div>
           
@@ -55,7 +53,7 @@ const Footer = () => {
       {/* Big Name */}
       <div className="w-full">
         <h2 className="text-[14.8vw] tracking-[-1vw] uppercase leading-[0.75] font-light text-gradient-brand text-center pb-8">
-          Kael Donovan
+          Akshay Ts
         </h2>
       </div>
     </footer>

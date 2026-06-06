@@ -5,7 +5,7 @@ const useContentStore = create(
   persist(
     (set) => ({
       // Hero Section
-      marqueeText: "Kael Donovan -",
+      marqueeText: "Akshay Ts -",
       heroTagline: "an independent creative Designer & Developer based in Netherlands",
       heroImage: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=800&auto=format&fit=crop",
 
