@@ -3,7 +3,7 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import useContentStore from '../../store/useContentStore';
 
 const Hero = () => {
-  const { marqueeText, heroTagline, heroImage } = useContentStore();
+  const { marqueeText, heroTagline, heroHighlight, heroSubtext, heroImage } = useContentStore();
 
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -80,6 +80,26 @@ const Hero = () => {
       >
         {heroTagline}
       </motion.h5>
+
+      {/* Hero Highlight */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.0, duration: 1 }}
+        className="relative z-20 text-[1.2rem] md:text-[1.5rem] lg:text-[1.8rem] font-semibold tracking-[0.02rem] uppercase text-[var(--brand)] mb-2 drop-shadow-lg"
+      >
+        {heroHighlight}
+      </motion.div>
+
+      {/* Hero Subtext */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 1 }}
+        className="relative z-20 text-[0.6rem] md:text-[0.8rem] tracking-[0.1rem] uppercase font-light max-w-[30rem] text-center leading-[1.2] mb-8 text-[var(--primary)] opacity-80 drop-shadow-md"
+      >
+        {heroSubtext}
+      </motion.div>
     </section>
   );
 };

@@ -8,9 +8,9 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-start">
           <div className="flex-1 mb-8 md:mb-0">
             <p className="text-[0.8rem] md:text-[1rem] leading-[1.2] tracking-[0.05rem] uppercase font-light">
-              Based in India
+              Based in Kochi, Kerala, India
             </p>
-            <a href="mailto:hello@kaeldonovan.com" className="block mt-3 md:mt-4 text-[0.7rem] tracking-[0.1rem] uppercase w-fit hover:text-[var(--brand)] transition-colors duration-700">
+            <a href="mailto:akshayts@example.com" className="block mt-3 md:mt-4 text-[0.7rem] tracking-[0.1rem] uppercase w-fit hover:text-[var(--brand)] transition-colors duration-700">
               akshayts@example.com
             </a>
           </div>
@@ -33,7 +33,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row items-start md:items-center gap-16 md:gap-0">
           <div className="flex-1">
             <p className="text-[0.7rem] tracking-[0.1rem] uppercase">
-              © All rights reserved / 2024
+              © All rights reserved / 2026
             </p>
           </div>
           <div className="flex-1 flex flex-col md:flex-row flex-wrap gap-4 md:gap-12">

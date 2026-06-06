@@ -21,7 +21,7 @@ const Contact = () => {
         </motion.div>
 
         <SplitText 
-          text="Ready to Transform Your Vision?" 
+          text="Let's Build Something Amazing Together" 
           className="text-[1.8rem] md:text-[2.2rem] lg:text-[2.75rem] font-light leading-[0.9] uppercase max-w-[35rem] w-full mt-4 text-[var(--primary)] text-center justify-center" 
           delay={0.2} 
         />
@@ -33,7 +33,7 @@ const Contact = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-[0.8rem] md:text-[1rem] tracking-[0.05rem] uppercase font-light max-w-[28rem] mt-4 mb-8 text-[var(--primary)] leading-[1]"
         >
-          Let's discuss how we can bring your ideas to life. Book a quick call with our team, and we'll guide you through the next steps.
+          Whether you're a startup founder, business owner, or someone with a great app idea, I'm always excited to collaborate on meaningful products. From mobile apps to full-stack web platforms, let's discuss how we can bring your vision to life.
         </motion.p>
 
         <motion.div

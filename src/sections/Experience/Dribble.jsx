@@ -40,7 +40,7 @@ const Dribble = () => {
         </h2>
 
         <h5 className="text-[0.8rem] md:text-[1rem] leading-[1] tracking-[0.05rem] uppercase font-light text-[var(--primary)]">
-          Energizing the digital landscape, our creativity shines in bespoke websites.
+          Check out my design work and creative projects on Dribbble.
         </h5>
 
         <div className="mt-8">
