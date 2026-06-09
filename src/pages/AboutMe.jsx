@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import Lenis from 'lenis';
 import Navbar from '../components/Navbar/Navbar';
@@ -7,50 +7,64 @@ import SplitText from '../components/Shared/SplitText';
 import Button from '../components/Buttons/Button';
 
 const stats = [
-  { number: '30+', label: 'Applications Built' },
-  { number: '4+', label: 'Years Experience' },
-  { number: '15+', label: 'Happy Clients' },
-  { number: '10+', label: 'Technologies' },
+  { label: 'Applications Delivered', value: 20, suffix: '+' },
+  { label: 'Years Building with Flutter', value: 4, suffix: '+' },
+  { label: 'Years Industry Experience', value: 2, suffix: '+' },
+  { label: 'Client & Business Projects', value: 15, suffix: '+' },
+  { label: 'Technologies Mastered', value: 10, suffix: '+' },
 ];
 
 const skills = [
-  { name: 'Flutter', level: 'Expert' },
-  { name: 'React', level: 'Advanced' },
-  { name: 'Node.js', level: 'Advanced' },
-  { name: 'Firebase', level: 'Expert' },
-  { name: 'MongoDB', level: 'Advanced' },
-  { name: 'TypeScript', level: 'Advanced' },
-  { name: 'React Native', level: 'Intermediate' },
-  { name: 'Python', level: 'Intermediate' },
-  { name: 'AWS', level: 'Intermediate' },
-  { name: 'GraphQL', level: 'Intermediate' },
+  { name: 'Flutter', level: 5 },
+  { name: 'Dart', level: 5 },
+  { name: 'React', level: 4 },
+  { name: 'Next.js', level: 4 },
+  { name: 'JavaScript', level: 4 },
+  { name: 'Node.js', level: 4 },
+  { name: 'Express.js', level: 4 },
+  { name: 'MongoDB', level: 4 },
+  { name: 'Firebase', level: 5 },
+  { name: 'Django REST Framework', level: 3 },
+  { name: 'AWS', level: 3 },
+  { name: 'Git', level: 4 },
+  { name: 'Figma', level: 3 },
+  { name: 'Postman', level: 3 },
+  { name: 'Riverpod', level: 4 },
+  { name: 'Bloc', level: 4 },
 ];
 
 const experience = [
   {
-    period: '2024 — Present',
-    role: 'Senior Full Stack Developer',
-    company: 'Freelance / Self-Employed',
-    description: 'Building and deploying production-grade mobile and web applications for startups and businesses. End-to-end delivery from concept to app store publishing.',
+    period: 'Jan 2025 — Present',
+    role: 'Senior Flutter Developer',
+    company: 'CodeCarrots Technologies',
+    description: 'Leading the development of scalable cross-platform applications using Flutter. Working closely with designers, backend developers, and stakeholders to deliver high-quality mobile experiences while focusing on performance, architecture, maintainability, and user experience.',
   },
   {
-    period: '2022 — 2024',
-    role: 'Full Stack Developer',
-    company: 'Tech Startup, Kochi',
-    description: 'Led development of cross-platform mobile applications using Flutter and Node.js. Managed CI/CD pipelines and mentored junior developers.',
-  },
-  {
-    period: '2021 — 2022',
+    period: 'Jun 2024 — Dec 2024',
     role: 'Junior Developer',
-    company: 'Digital Agency, Kochi',
-    description: 'Developed responsive web applications and contributed to REST API design. Collaborated on client projects across various industries.',
+    company: 'Digicue',
+    description: 'Contributed to the development of mobile and web applications, implementing new features, integrating APIs, optimizing user interfaces, and collaborating with development teams to deliver production-ready solutions.',
   },
   {
-    period: '2020 — 2021',
-    role: 'Freelance Developer',
-    company: 'Self-Employed',
-    description: 'Started freelance journey building websites and small-scale applications. Gained foundational experience in full-stack development.',
+    period: 'Dec 2023 — May 2024',
+    role: 'Flutter Developer Intern',
+    company: '',
+    description: 'Started my professional journey in the industry by working on real-world Flutter applications. Gained hands-on experience in mobile development, state management, API integration, debugging, and modern development workflows.',
   },
+  {
+    period: '2020 — 2023',
+    role: 'Computer Science Student & Aspiring Developer',
+    company: '',
+    description: 'While pursuing my studies, I dedicated much of my time to learning software development and building personal projects. During this period, I discovered Flutter, developed a strong passion for mobile application development, explored full-stack technologies, and laid the foundation for my career as a developer. Through continuous learning, experimentation, and project building, I gained practical experience with Flutter, Firebase, JavaScript, React, Node.js, and modern software development practices.',
+  },
+];
+
+const storyParagraphs = [
+  'My journey into programming started during my teenage years, driven by a genuine passion for technology and creativity. I was fascinated by how ideas could be transformed into real products that people use every day. What began as curiosity quickly turned into countless hours of learning, experimenting, and building projects, constantly pushing myself to understand how great software is created.',
+  'In 2019, I discovered Flutter, and it completely changed the direction of my development journey. The ability to create beautiful, high-performance applications across multiple platforms from a single codebase instantly captured my attention. Beyond the technology itself, I was drawn to the idea of crafting experiences that felt intuitive, polished, and enjoyable for users. Since then, Flutter has remained at the core of my work, enabling me to build applications that combine performance, functionality, and thoughtful design.',
+  'As my experience grew, so did my interest in building complete digital products. This led me to explore backend development and the MERN ecosystem, where I gained a deeper understanding of modern web architecture and scalable application development. Working with MongoDB, Express.js, React, and Node.js allowed me to move beyond frontend experiences and create full-stack solutions, from APIs and databases to complex web platforms and business systems.',
+  'Over the years, I\'ve had the opportunity to work on a diverse range of products, including mobile applications, SaaS platforms, attendance management systems, social networks, business tools, and startup solutions. Every project has strengthened my belief that great products are built through a balance of technology, user experience, and attention to detail. Today, as an independent Full Stack Developer based in Kochi, Kerala, I specialize in building modern mobile and web experiences using Flutter, the MERN stack, Firebase, and other modern technologies. I enjoy being involved throughout the entire product lifecycle — from shaping ideas and designing architectures to development, deployment, and continuous improvement. What motivates me most is the ability to create products that make a meaningful impact. Technology is constantly evolving, and I embrace every opportunity to learn, improve, and push my craft further. For me, development is more than a profession — it\'s a passion that continues to inspire me to create things worth loving.',
 ];
 
 const staggerContainer = {
@@ -72,8 +86,32 @@ const fadeUp = {
   },
 };
 
+function CountUp({ end, suffix = '+' }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+
+  useEffect(() => {
+    if (!isInView) return;
+    let start = null;
+    const duration = 2000;
+    const animate = (now) => {
+      if (!start) start = now;
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      setCount(Math.floor(progress * end));
+      if (progress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  }, [isInView, end]);
+
+  return <span ref={ref}>{count}{suffix}</span>;
+}
+
 const AboutMe = () => {
   const mainRef = useRef(null);
+  const storyImgRef = useRef(null);
+  const storyImgInView = useInView(storyImgRef, { once: true, margin: '-10%' });
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -163,52 +201,82 @@ const AboutMe = () => {
         </section>
 
         {/* Story */}
-        <section className="w-full px-4 md:px-8 py-16 sm:py-32">
+        <section className="w-full px-4 md:px-8 py-16 sm:py-32 relative">
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[var(--brand)]/20 to-transparent" />
           <div className="max-w-[80rem] mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-10%' }}
-              transition={{ duration: 0.6 }}
-              className="text-[0.7rem] tracking-[0.4rem] uppercase font-bold text-[var(--brand)] mb-8"
-            >
-              My Story
-            </motion.div>
+            <div className="flex items-center gap-4 mb-12">
+              <motion.div
+                initial={{ opacity: 0, scaleX: 0 }}
+                whileInView={{ opacity: 1, scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+                className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[var(--brand)]/30 to-transparent origin-left"
+              />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-10%' }}
+                transition={{ duration: 0.6 }}
+                className="text-[0.7rem] tracking-[0.4rem] uppercase font-bold text-[var(--brand)] flex-shrink-0"
+              >
+                My Story
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, scaleX: 0 }}
+                whileInView={{ opacity: 1, scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
+                className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[var(--brand)]/30 to-transparent origin-right"
+              />
+            </div>
             <div className="flex flex-col md:flex-row items-start gap-8 md:gap-20">
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, margin: '-10%' }}
+                ref={storyImgRef}
+                initial={{ opacity: 0, x: -40 }}
+                animate={storyImgInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
                 className="w-full md:w-[35%] flex-shrink-0"
               >
-                <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] rounded-xl overflow-hidden">
+                <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] rounded-xl overflow-hidden group">
                   <div className="absolute inset-0 bg-[url('/images/overlay.webp')] bg-cover bg-center opacity-30 mix-blend-overlay pointer-events-none z-10" />
-                  <img
+                  <motion.img
                     src="/images/hero.png"
                     alt="Akshay T.S"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-105"
+                    initial={{ scale: 1.1 }}
+                    animate={storyImgInView ? { scale: 1 } : {}}
+                    transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
                   />
-                  <div className="absolute inset-0 rounded-xl ring-1 ring-[var(--brand)]/20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand)]/20 via-transparent to-transparent z-20" />
+                  <div className="absolute inset-0 rounded-xl ring-1 ring-[var(--brand)]/20 group-hover:ring-[var(--brand)]/40 transition-all duration-700" />
+                  <div className="absolute bottom-4 left-4 z-30">
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={storyImgInView ? { opacity: 1, y: 0 } : {}}
+                      transition={{ duration: 0.6, delay: 0.4 }}
+                      className="text-[0.5rem] tracking-[0.2rem] uppercase font-bold text-white/60"
+                    >
+                      Based in Kochi, Kerala
+                    </motion.div>
+                  </div>
                 </div>
               </motion.div>
-              <div className="flex-1">
-                <SplitText
-                  text="My journey into programming started during my teenage years, driven by a genuine passion for technology and creativity. I was fascinated by how ideas could be transformed into real products that people use every day. What began as curiosity quickly turned into countless hours of learning, experimenting, and building projects, constantly pushing myself to understand how great software is created. In 2019, I discovered Flutter, and it completely changed the direction of my development journey. The ability to create beautiful, high-performance applications across multiple platforms from a single codebase instantly captured my attention. Beyond the technology itself, I was drawn to the idea of crafting experiences that felt intuitive, polished, and enjoyable for users. Since then, Flutter has remained at the core of my work, enabling me to build applications that combine performance, functionality, and thoughtful design. As my experience grew, so did my interest in building complete digital products. This led me to explore backend development and the MERN ecosystem, where I gained a deeper understanding of modern web architecture and scalable application development. Working with MongoDB, Express.js, React, and Node.js allowed me to move beyond frontend experiences and create full-stack solutions, from APIs and databases to complex web platforms and business systems. Over the years, I've had the opportunity to work on a diverse range of products, including mobile applications, SaaS platforms, attendance management systems, social networks, business tools, and startup solutions. Every project has strengthened my belief that great products are built through a balance of technology, user experience, and attention to detail. Today, as an independent Full Stack Developer based in Kochi, Kerala, I specialize in building modern mobile and web experiences using Flutter, the MERN stack, Firebase, and other modern technologies. I enjoy being involved throughout the entire product lifecycle—from shaping ideas and designing architectures to development, deployment, and continuous improvement. What motivates me most is the ability to create products that make a meaningful impact. Technology is constantly evolving, and I embrace every opportunity to learn, improve, and push my craft further. For me, development is more than a profession—it's a passion that continues to inspire me to create things worth loving."
-                  className="text-[1rem] sm:text-[1.6rem] md:text-[2rem] lg:text-[2.5rem] font-light leading-[1.1] uppercase"
-                  delay={0.2}
-                />
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-10%' }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                  className="mt-6 sm:mt-12"
-                >
-                  <p className="text-[0.8rem] sm:text-[0.9rem] md:text-[1rem] tracking-[0.05rem] uppercase font-light max-w-[50rem] leading-[1.2] text-[#a0a0a0]">
-                    My approach combines technical excellence with a deep understanding of user experience. I believe great software is built at the intersection of clean architecture and thoughtful design — every project I take on gets my full attention from concept to deployment.
-                  </p>
-                </motion.div>
+              <div className="flex-1 space-y-10">
+                {storyParagraphs.map((text, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-10%' }}
+                    transition={{ duration: 0.6, delay: i * 0.15, ease: [0.19, 1, 0.22, 1] }}
+                    className="relative pl-6 border-l border-[#252525] hover:border-[var(--brand)]/40 transition-colors duration-700"
+                  >
+                    <div className="absolute -left-[3px] top-1 w-[5px] h-[5px] rounded-full bg-[var(--brand)] opacity-60" />
+                    <p className="text-[clamp(0.8rem,1.6vw,1.2rem)] font-light leading-[1.6] text-[var(--primary)]">
+                      {text}
+                    </p>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>
@@ -226,7 +294,7 @@ const AboutMe = () => {
             >
               By the Numbers
             </motion.div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12">
               {stats.map((stat, i) => (
                 <motion.div
                   key={stat.label}
@@ -237,7 +305,7 @@ const AboutMe = () => {
                   className="text-center"
                 >
                   <div className="text-[2.5rem] sm:text-[4rem] md:text-[5rem] font-light uppercase leading-[0.85] text-[var(--brand)]">
-                    {stat.number}
+                    <CountUp end={stat.value} suffix={stat.suffix} />
                   </div>
                   <div className="text-[0.65rem] sm:text-[0.7rem] tracking-[0.2rem] uppercase font-light mt-4 text-[#a0a0a0]">
                     {stat.label}
@@ -281,8 +349,17 @@ const AboutMe = () => {
                   <div className="text-[0.75rem] sm:text-[0.9rem] md:text-[1rem] tracking-[0.08rem] uppercase font-light group-hover:text-[var(--brand)] transition-colors duration-500 break-words">
                     {skill.name}
                   </div>
-                  <div className="text-[0.65rem] sm:text-[0.55rem] tracking-[0.15rem] uppercase font-bold text-[#707070] mt-2">
-                    {skill.level}
+                  <div className="flex items-center justify-center gap-1 mt-3">
+                    {[1, 2, 3, 4, 5].map((dot) => (
+                      <div
+                        key={dot}
+                        className={`w-[6px] h-[6px] rounded-full transition-all duration-500 ${
+                          dot <= skill.level
+                            ? 'bg-[var(--brand)]'
+                            : 'bg-[#353535]'
+                        }`}
+                      />
+                    ))}
                   </div>
                 </motion.div>
               ))}
@@ -303,13 +380,13 @@ const AboutMe = () => {
               Experience
             </motion.div>
             <SplitText
-              text="My professional journey"
+              text="My Professional Journey"
               className="text-[1.4rem] sm:text-[2.2rem] md:text-[2.75rem] font-light uppercase leading-[0.9] max-w-[40rem] mb-8 sm:mb-16"
               delay={0.2}
             />
             <div className="relative">
               <div className="absolute left-[7px] sm:left-[9px] top-0 bottom-0 w-[1px] bg-[#252525]" />
-              <div className="flex flex-col gap-10 sm:gap-16">
+              <div className="flex flex-col gap-6 sm:gap-8">
                 {experience.map((exp, i) => (
                   <motion.div
                     key={i}
@@ -317,21 +394,28 @@ const AboutMe = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: '-10%' }}
                     transition={{ duration: 0.6, delay: i * 0.1 }}
-                    className="relative pl-10 sm:pl-12"
+                    className="relative pl-10 sm:pl-12 group"
                   >
-                    <div className="absolute left-0 top-1 w-[15px] sm:w-[19px] h-[15px] sm:h-[19px] rounded-full bg-[var(--brand)] border-[3px] border-black" />
-                    <div className="text-[0.65rem] sm:text-[0.6rem] md:text-[0.7rem] tracking-[0.3rem] uppercase font-bold text-[var(--brand)] mb-3">
-                      {exp.period}
+                    <div className="absolute left-0 top-1 w-[15px] sm:w-[19px] h-[15px] sm:h-[19px] rounded-full bg-[var(--brand)] border-[3px] border-black z-10 transition-transform duration-500 group-hover:scale-125" />
+                    <div
+                      className="glass-panel p-6 sm:p-8 transition-all duration-500 group-hover:border-[var(--brand)]/30"
+                      style={{ borderRadius: '12px', background: 'rgba(35,35,35,0.5)', backdropFilter: 'blur(20px)' }}
+                    >
+                      <div className="text-[0.65rem] sm:text-[0.6rem] md:text-[0.7rem] tracking-[0.3rem] uppercase font-bold text-[var(--brand)] mb-3">
+                        {exp.period}
+                      </div>
+                      <h3 className="text-[1.2rem] sm:text-[1.5rem] md:text-[1.8rem] font-light uppercase leading-[0.9] mb-2">
+                        {exp.role}
+                      </h3>
+                      {exp.company && (
+                        <div className="text-[0.7rem] sm:text-[0.8rem] tracking-[0.1rem] uppercase font-light text-[#a0a0a0] mb-4">
+                          {exp.company}
+                        </div>
+                      )}
+                      <p className="text-[0.75rem] sm:text-[0.8rem] tracking-[0.05rem] uppercase font-light max-w-[45rem] leading-[1.2] text-[#707070] group-hover:text-[#a0a0a0] transition-colors duration-500">
+                        {exp.description}
+                      </p>
                     </div>
-                    <h3 className="text-[1.2rem] sm:text-[1.5rem] md:text-[1.8rem] font-light uppercase leading-[0.9] mb-2">
-                      {exp.role}
-                    </h3>
-                    <div className="text-[0.7rem] sm:text-[0.8rem] tracking-[0.1rem] uppercase font-light text-[#a0a0a0] mb-4">
-                      {exp.company}
-                    </div>
-                    <p className="text-[0.75rem] sm:text-[0.8rem] tracking-[0.05rem] uppercase font-light max-w-[45rem] leading-[1.2] text-[#707070]">
-                      {exp.description}
-                    </p>
                   </motion.div>
                 ))}
               </div>
