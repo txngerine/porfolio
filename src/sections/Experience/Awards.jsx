@@ -7,24 +7,24 @@ const Awards = () => {
   const isInView = useInView(ref, { once: true, margin: "-10%" });
 
   return (
-    <section className="relative overflow-hidden bg-black text-[var(--primary)] pt-12 md:pt-24 min-h-screen flex flex-col justify-end">
+    <section className="relative overflow-hidden bg-black text-[var(--primary)] tb:h-[500px] min-h-screen flex flex-col justify-end">
       
       {/* Background Masked Images Grid */}
       <div 
-        className="absolute inset-0 z-0 flex items-start justify-center gap-2 md:gap-4 p-2 md:p-4 pointer-events-none opacity-30 overflow-hidden"
+        className="absolute inset-0 z-0 flex items-start justify-center gap-[1rem] max-sm:gap-[0.5rem] p-2 md:p-4 pointer-events-none opacity-30 overflow-hidden"
         style={{ WebkitMaskImage: 'linear-gradient(0deg, transparent, #000 80%)' }}
       >
         {[1, 2, 3, 4, 5].map((col, index) => (
           <motion.div 
             key={col} 
-            className="flex flex-col gap-2 md:gap-4 w-[20vw] md:w-[15vw]"
+            className="flex flex-col gap-[1rem] max-sm:gap-[0.5rem] w-[20vw] md:w-[15vw]"
             animate={{
               y: index % 2 === 0 ? ["0%", "-50%"] : ["-50%", "0%"]
             }}
             transition={{
               repeat: Infinity,
               ease: "linear",
-              duration: 20 + index * 2 // slightly different speeds
+              duration: 20 + index * 2
             }}
           >
             {[1, 2, 3, 4].map((img) => (
@@ -39,10 +39,9 @@ const Awards = () => {
         ))}
       </div>
 
-      <div className="w-full relative z-10 px-4 md:px-8 pb-8 md:pb-16 mt-[20vh] md:mt-[40vh]">
-        <div className="w-full h-[1px] bg-[#131313] mb-8 md:mb-16" />
-        
-        <div ref={ref} className="w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
+      {/* Text overlay at bottom */}
+      <div className="absolute bottom-0 left-0 z-10 w-full p-[2rem] max-sm:p-[1rem]">
+        <div ref={ref} className="w-full flex flex-col max-sm:flex-col sm:flex-row justify-between items-start sm:items-end gap-8 sm:gap-0">
           <SplitText 
             text="I have already a variety of awards won" 
             className="text-[2.5rem] md:text-[3.2rem] lg:text-[4.5rem] font-light uppercase leading-[0.9] max-w-[60rem] w-full" 
@@ -53,12 +52,14 @@ const Awards = () => {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="flex flex-col items-start md:items-end gap-4 md:gap-8"
+            className="flex flex-col items-start sm:items-end gap-[2rem] max-sm:gap-[1rem]"
           >
-            <div className="text-xl md:text-2xl lg:text-3xl font-light tracking-[0.2rem] uppercase opacity-50">AWWWARDS</div>
-            <div className="text-xl md:text-2xl lg:text-3xl font-light tracking-[0.2rem] uppercase opacity-50">CSSDA</div>
+            <img src="/images/awwardsLogo.svg" alt="awwards" className="w-[35vw] sm:w-[20vw] first:w-[35vw] sm:first:w-[15vw] h-auto" />
+            <img src="/images/cssdLogo.svg" alt="cssd" className="w-[40vw] sm:w-[20vw] h-auto" />
           </motion.div>
         </div>
+
+        <div className="w-full h-[1px] bg-[#131313] mt-[8rem] tb:mt-[5rem] max-sm:mt-[3rem]" />
       </div>
     </section>
   );

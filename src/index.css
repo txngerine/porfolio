@@ -1,12 +1,28 @@
 @import "tailwindcss";
 
+@custom-media --tb (width >= 840px);
+@custom-media --dt (width >= 1080px);
+
+@font-face {
+  font-family: "PPNeueMontreal-Medium";
+  src: url("/fonts/PPNeueMontreal-Medium.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PPNeueMontreal-Regular";
+  src: url("/fonts/PPNeueMontreal-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+
 @theme {
   --color-brand: #f44e00;
   --color-brand-light: #fa7300;
   --color-primary: #f8f8f8;
   --color-background: #000000;
   
-  --font-sans: "Inter", sans-serif;
+  --font-sans: "PPNeueMontreal-Regular", sans-serif;
+  --font-medium: "PPNeueMontreal-Medium", sans-serif;
 }
 
 @layer base {
@@ -31,7 +47,7 @@
   body {
     background-color: var(--background);
     color: var(--primary);
-    font-family: "Inter", sans-serif;
+    font-family: "PPNeueMontreal-Regular", sans-serif;
     overflow-x: clip;
     overscroll-behavior: none;
     -webkit-font-smoothing: antialiased;

@@ -7,9 +7,9 @@ const Contact = () => {
     <section id="contact" className="p-4 md:p-8 h-screen w-full relative overflow-hidden bg-[var(--background)]">
       
       {/* Background Image */}
-      <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop')] bg-cover bg-center opacity-30 mix-blend-overlay pointer-events-none" />
+      <div className="absolute inset-0 bg-[url('/images/overlay.webp')] bg-cover bg-center opacity-30 mix-blend-overlay pointer-events-none" />
 
-      <div className="glass-panel w-full h-full flex flex-col justify-center items-center text-center p-4 relative z-10">
+      <div className="glass-panel w-full h-full flex flex-col justify-center items-center text-center p-[2rem] tb:p-[6rem_2rem] max-sm:p-[4rem_1rem] relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -22,7 +22,7 @@ const Contact = () => {
 
         <SplitText 
           text="Let's Build Something Amazing Together" 
-          className="text-[1.8rem] md:text-[2.2rem] lg:text-[2.75rem] font-light leading-[0.9] uppercase max-w-[35rem] w-full mt-4 text-[var(--primary)] text-center justify-center" 
+          className="text-[1.8rem] md:text-[2.2rem] lg:text-[2.75rem] font-light leading-[0.9] uppercase max-w-[35rem] w-full mt-[1rem] max-sm:mt-[0.8rem] text-[var(--primary)] text-center justify-center" 
           delay={0.2} 
         />
 

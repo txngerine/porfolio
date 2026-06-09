@@ -6,8 +6,8 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-[1000] flex items-start justify-between py-6 px-4 md:px-8 mix-blend-difference text-[var(--primary)] pointer-events-auto">
-        <a href="/" className="text-sm md:text-base font-light tracking-wide uppercase hidden md:block hover:text-[var(--brand)] transition-colors duration-700">
+      <nav className="fixed top-0 left-0 w-full z-[1000] flex items-start justify-between py-[1.4rem] px-4 md:px-8 mix-blend-difference text-[var(--primary)] pointer-events-auto">
+        <a href="/" className="text-[0.8rem] dt:text-[1rem] font-['PPNeueMontreal-Medium'] tracking-wide uppercase hidden md:block hover:text-[var(--brand)] transition-colors duration-700">
           Akshay Ts
         </a>
         
@@ -21,7 +21,7 @@ const Navbar = () => {
           </span>
         </div>
 
-        <a href="#contact" className="text-sm md:text-base font-light tracking-wide uppercase hidden md:block hover:text-[var(--brand)] transition-colors duration-700">
+        <a href="#contact" className="text-[0.8rem] dt:text-[1rem] font-['PPNeueMontreal-Medium'] tracking-wide uppercase hidden md:block hover:text-[var(--brand)] transition-colors duration-700">
           Contact
         </a>
       </nav>

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Preloader = () => {
@@ -36,7 +36,7 @@ const Preloader = () => {
               initial={{ y: "100%" }}
               animate={{ y: 0 }}
               transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
-              className="block text-[40vw] md:text-[25vw] tracking-[-3vw] leading-[0.75] font-light"
+              className="block text-[40vw] md:text-[25vw] max-sm:text-[60vw] tracking-[-3vw] leading-[0.7] font-light"
             >
               {counter}
             </motion.span>

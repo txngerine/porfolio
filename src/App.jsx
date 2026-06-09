@@ -11,8 +11,6 @@ import Dribble from './sections/Experience/Dribble';
 import Contact from './sections/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import Preloader from './components/Shared/Preloader';
-import Admin from './pages/Admin';
-
 const Portfolio = () => {
   useEffect(() => {
     const lenis = new Lenis({
@@ -61,7 +59,6 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Portfolio />} />
-        <Route path="/admin" element={<Admin />} />
       </Routes>
     </BrowserRouter>
   );

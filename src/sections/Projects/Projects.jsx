@@ -63,7 +63,7 @@ const Projects = () => {
         </div>
       </div>
 
-      <div className="mt-12 md:mt-20 lg:mt-32 flex flex-col items-center">
+      <div className="mt-[3rem] tb:mt-[5rem] dt:mt-[8rem] flex flex-col items-center">
         {projects.map((project, index) => (
           <a
             key={index}
@@ -75,9 +75,9 @@ const Projects = () => {
               alt={project.title} 
               className="w-full h-full object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-110"
             />
-            <div className="absolute top-0 w-full flex flex-col sm:flex-row justify-between p-4 md:p-8 gap-6 z-10 pointer-events-none">
+            <div className="absolute top-0 w-full flex flex-col sm:flex-row justify-between p-[1rem] tb:p-[2rem] gap-6 z-10 pointer-events-none">
               <div className="overflow-hidden">
-                <h3 className="text-[1.2rem] md:text-[1.8rem] tracking-[0.08rem] uppercase font-light text-white drop-shadow-lg -translate-y-[150%] transition-transform duration-[800ms] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:translate-y-0">
+                <h3 className="text-[1.2rem] md:text-[1.8rem] tracking-[0.08rem] uppercase font-light text-white drop-shadow-lg -translate-y-full transition-transform duration-[800ms] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:translate-y-0">
                   {project.title}
                 </h3>
               </div>
