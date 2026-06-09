@@ -6,8 +6,6 @@ import Hero from './sections/Hero/Hero';
 import About from './sections/About/About';
 import Projects from './sections/Projects/Projects';
 import Services from './sections/Services/Services';
-import Awards from './sections/Experience/Awards';
-import Dribble from './sections/Experience/Dribble';
 import Contact from './sections/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import Preloader from './components/Shared/Preloader';
@@ -45,8 +43,6 @@ const Portfolio = () => {
         <About />
         <Projects />
         <Services />
-        <Awards />
-        <Dribble />
         <Contact />
       </main>
       <Footer />
