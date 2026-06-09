@@ -54,7 +54,7 @@ const Services = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Button href="#contact">Get in touch</Button>
+            <Button href="/contact">Get in touch</Button>
           </motion.div>
         </div>
       </div>

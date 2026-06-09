@@ -1,0 +1,174 @@
+=== PORTFOLIO TEXT CONTENT ===
+
+--- BRAND / IDENTITY ---
+Name: Akshay Ts
+Display: Akshay.Ts (Akshay + . + Ts)
+Email: akshaits4@gmail.com
+Bluesky: @akshaits.bsky.social
+Instagram: @akshaiiii.i
+LinkedIn: Akshai T S
+Location: Based in Kochi, Kerala, India
+Copyright: © All rights reserved / 2026
+
+--- NAVIGATION ---
+Home -> /
+About me -> /about-me
+About -> /about-me
+Projects -> /projects
+Contact -> /contact
+Menu / Close (toggle)
+
+--- PRELOADER (31 languages - "hello") ---
+你好 (Chinese), こんにちは (Japanese), 안녕하세요 (Korean), नमस्ते (Hindi), مرحبا (Arabic),
+Hola (Spanish), Bonjour (French), Ciao (Italian), Hallo (German), Olá (Portuguese),
+Здравствуйте (Russian), สวัสดี (Thai), Hej (Swedish), Merhaba (Turkish), Sawubona (Zulu),
+Բարև (Armenian), Mingalaba (Burmese), Xin chào (Vietnamese), Habari (Swahili), Halló (Icelandic),
+Buna (Romanian), Dia dhuit (Irish), Saluton (Esperanto), Bongu (Maltese), Namaskara (Kannada),
+Kamusta (Filipino), Salam (Persian), Tungjatjeta (Albanian), Salama (Malagasy), Privet (Russian),
+Hello (English)
+
+--- HERO SECTION ---
+Marquee: "Akshay Ts -" (repeating)
+Tagline: An independent Full Stack Developer based in Kochi, Kerala, building modern mobile applications, web platforms, and digital experiences.
+
+--- ABOUT SECTION (Homepage) ---
+Heading: About
+SplitText: I am a Full Stack Developer based in Kochi, Kerala, with experience building and publishing mobile applications and web platforms for startups, businesses, and personal products. Having completed over 30 applications across Android, iOS, and web, I specialize in creating scalable, high-performance solutions using Flutter, the MERN stack, Firebase, Node.js, and modern development practices. My passion lies in transforming ideas into intuitive digital products that solve real-world problems.
+Button: More About Me -> /about-me
+
+--- ABOUT ME PAGE ---
+Marquee: " About Me " (repeating)
+Label: About Me
+Headline: Akshay.Ts
+Tagline: Full Stack Developer crafting digital experiences across mobile and web
+
+My Story:
+SplitText: I am a Full Stack Developer based in Kochi, Kerala, with experience building and publishing mobile applications and web platforms for startups, businesses, and personal products. Having completed over 30 applications across Android, iOS, and web, I specialize in creating scalable, high-performance solutions using Flutter, the MERN stack, Firebase, Node.js, and modern development practices. My passion lies in transforming ideas into intuitive digital products that solve real-world problems.
+Paragraph: My approach combines technical excellence with a deep understanding of user experience. I believe great software is built at the intersection of clean architecture and thoughtful design — every project I take on gets my full attention from concept to deployment.
+
+By the Numbers:
+30+ Applications Built | 4+ Years Experience | 15+ Happy Clients | 10+ Technologies
+
+Skills & Technologies:
+SplitText: Tools I use to bring ideas to life
+Flutter (Expert) | React (Advanced) | Node.js (Advanced) | Firebase (Expert)
+MongoDB (Advanced) | TypeScript (Advanced) | React Native (Intermediate)
+Python (Intermediate) | AWS (Intermediate) | GraphQL (Intermediate)
+
+Experience:
+SplitText: My professional journey
+1. 2024 — Present | Senior Full Stack Developer | Freelance / Self-Employed
+   Building and deploying production-grade mobile and web applications for startups and businesses. End-to-end delivery from concept to app store publishing.
+2. 2022 — 2024 | Full Stack Developer | Tech Startup, Kochi
+   Led development of cross-platform mobile applications using Flutter and Node.js. Managed CI/CD pipelines and mentored junior developers.
+3. 2021 — 2022 | Junior Developer | Digital Agency, Kochi
+   Developed responsive web applications and contributed to REST API design. Collaborated on client projects across various industries.
+4. 2020 — 2021 | Freelance Developer | Self-Employed
+   Started freelance journey building websites and small-scale applications. Gained foundational experience in full-stack development.
+
+CTA: Have a project in mind? Let's build something great.
+Button: Start a Conversation -> /contact
+
+--- PROJECTS SECTION (Homepage) ---
+Label: Creations
+SplitText: A look into my latest projects
+Button: All Projects -> /projects
+
+Projects:
+1. NTunes | Flutter, Music Streaming, Nothing OS Inspired UI
+2. AttendGo | Flutter, Attendance Management, Firebase
+3. Korlinks | Flutter, Business Networking Platform, API Integration
+4. PinWalls | Flutter, Social Platform, Firebase
+
+--- PROJECTS PAGE ---
+Marquee: " Projects " (repeating)
+Label: My Work
+Headline: Selected.Projects
+Tagline: Mobile and web applications built with modern technologies — from concept to production
+
+Featured Work:
+SplitText: Every project is a new story
+
+Projects:
+1. NTunes (2024) | Music Streaming Reimagined
+   A feature-rich music streaming application with Nothing OS inspired UI, built for seamless audio experiences across devices.
+   Tags: Flutter, Music Streaming, Nothing OS Inspired UI
+
+2. AttendGo (2024) | Smart Attendance Management
+   A comprehensive attendance management system leveraging Firebase for real-time tracking, reporting, and team management.
+   Tags: Flutter, Attendance Management, Firebase
+
+3. Korlinks (2023) | Business Networking Platform
+   A professional networking platform connecting businesses through intelligent matching and seamless API integrations.
+   Tags: Flutter, Business Networking, API Integration
+
+4. PinWalls (2023) | Social Discovery Platform
+   A visually-driven social platform for discovering and sharing curated content, powered by Firebase real-time infrastructure.
+   Tags: Flutter, Social Platform, Firebase
+
+5. ShopEase (2023) | E-Commerce Made Simple
+   A full-featured e-commerce mobile application with cart management, payment gateway integration, and order tracking.
+   Tags: Flutter, E-Commerce, Payment Gateway
+
+6. TaskFlow (2022) | Project Management Reimagined
+   A collaborative project management tool with real-time updates, Kanban boards, and team analytics.
+   Tags: Flutter, Project Management, Node.js
+
+CTA: Have a project in mind? Let's build something great.
+Button: Start a Conversation -> /contact
+
+--- SERVICES SECTION ---
+Label: Capabilities
+SplitText: Tailored Solutions for Your Unique Vision
+Button: Get in touch -> /contact
+
+Services:
+1. Strategy (01)
+   Product Discovery, Technical Consultation, Requirements Analysis, Architecture Planning, Optimization
+
+2. Design & Experience (02)
+   UI/UX Implementation, Design Systems, Responsive Interfaces, User Flows, Micro-interactions
+
+3. Development (03)
+   Flutter, MERN Stack, REST APIs, Firebase, Backend Development, Testing
+
+4. Deployment & Growth (04)
+   Cloud Infrastructure, App Store Publishing, CI/CD, Monitoring, Maintenance, Scaling
+
+--- CONTACT SECTION (Homepage) ---
+Label: Book a call
+SplitText: Let's Build Something Amazing Together
+Paragraph: Whether you're a startup founder, business owner, or someone with a great app idea, I'm always excited to collaborate on meaningful products. From mobile apps to full-stack web platforms, let's discuss how we can bring your vision to life.
+Button: Send an email -> mailto:akshaits4@gmail.com
+
+--- CONTACT PAGE ---
+Marquee: " Get in Touch " (repeating)
+Label: Contact
+Headline: Let's talk.
+Tagline: Have a project, idea, or just want to say hi? I'd love to hear from you.
+
+Reach Out:
+SplitText: I'm always open to new opportunities, collaborations, and conversations. Whether you have a project in mind or just want to connect, feel free to reach out.
+
+Contact Methods:
+Email: akshaits4@gmail.com
+Bluesky: @akshaits.bsky.social
+Instagram: @akshaiiii.i
+LinkedIn: Akshai T S
+
+CTA: I'll get back to you within 24 hours.
+Button: Send an Email -> mailto:akshaits4@gmail.com
+
+--- FOOTER ---
+Location: Based in Kochi, Kerala, India
+Email: akshaits4@gmail.com
+Links: Home (/), About (/about-me), Projects (/projects), Contact (/contact)
+Social: Bluesky, Instagram, LinkedIn
+Copyright: © All rights reserved / 2026
+Footer Name: Akshay Ts
+
+--- DRIBBBLE SECTION ---
+Label: Follow on
+Description: Check out my design work and creative projects on Dribbble.
+Button: View Dribbble -> https://dribbble.com/
+SplitReveal: Energizing the digital landscape, our creativity shines in bespoke websites.

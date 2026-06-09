@@ -58,7 +58,7 @@ const Projects = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <Button href="/projects/">All Projects</Button>
+            <Button href="/projects">All Projects</Button>
           </motion.div>
         </div>
       </div>

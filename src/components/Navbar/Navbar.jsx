@@ -8,7 +8,7 @@ const Navbar = () => {
     <>
       <nav className="fixed top-0 left-0 w-full z-[1000] flex items-start justify-between py-[1.4rem] px-4 md:px-8 mix-blend-difference text-[var(--primary)] pointer-events-auto">
         <a href="/" className="text-[0.8rem] dt:text-[1rem] font-['PPNeueMontreal-Medium'] tracking-wide uppercase hidden md:block hover:text-[var(--brand)] transition-colors duration-700">
-          Akshay Ts
+          Akshay T.S
         </a>
         
         <div 
@@ -21,7 +21,7 @@ const Navbar = () => {
           </span>
         </div>
 
-        <a href="#contact" className="text-[0.8rem] dt:text-[1rem] font-['PPNeueMontreal-Medium'] tracking-wide uppercase hidden md:block hover:text-[var(--brand)] transition-colors duration-700">
+        <a href="/contact" className="text-[0.8rem] dt:text-[1rem] font-['PPNeueMontreal-Medium'] tracking-wide uppercase hidden md:block hover:text-[var(--brand)] transition-colors duration-700">
           Contact
         </a>
       </nav>
@@ -36,17 +36,20 @@ const Navbar = () => {
             className="fixed z-[999] w-[calc(100%-20px)] top-[10px] left-[10px] rounded-lg glass-panel flex flex-col items-center justify-end pt-36 pb-12 pointer-events-auto"
           >
             <ul className="flex flex-col items-center gap-3 w-full group/list">
-              {['Home', 'About me', 'Projects', 'Contact'].map((item) => (
-                <li key={item} className="overflow-hidden">
-                  <a 
-                    href={`#${item.toLowerCase().replace(' ', '-')}`}
-                    onClick={() => setIsOpen(false)}
-                    className="text-[1.8rem] md:text-[2.75rem] font-light uppercase leading-[0.9] block opacity-100 transition-opacity duration-700 group-hover/list:opacity-30 hover:!opacity-100"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
+              {['Home', 'About me', 'Projects', 'Contact'].map((item) => {
+                const href = item === 'Home' ? '/' : item === 'About me' ? '/about-me' : item === 'Projects' ? '/projects' : item === 'Contact' ? '/contact' : '/#' + item.toLowerCase();
+                return (
+                  <li key={item} className="overflow-hidden">
+                    <a
+                      href={href}
+                      onClick={() => setIsOpen(false)}
+                      className="text-[1.8rem] md:text-[2.75rem] font-light uppercase leading-[0.9] block opacity-100 transition-opacity duration-700 group-hover/list:opacity-30 hover:!opacity-100"
+                    >
+                      {item}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </motion.div>
         )}

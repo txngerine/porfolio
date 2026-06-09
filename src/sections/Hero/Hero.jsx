@@ -1,8 +1,9 @@
 import { useRef, useEffect } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, useScroll } from 'framer-motion';
 
-const marqueeText = "Akshay Ts -";
-const heroTagline = "An independent Full Stack Developer based in Kochi, Kerala, building modern mobile applications, web platforms, and digital experiences.";
+const marqueeText = "Akshay T.S -";
+const heroTagline = "Creating things worth loving.";
+const heroSubline = "Mobile • Web • Product";
 
 const Hero = () => {
   const mouseX = useMotionValue(0);
@@ -46,14 +47,24 @@ const Hero = () => {
         </motion.div>
       </div>
 
-      <motion.h5 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 1 }}
-        className="relative z-20 text-[0.8rem] dt:text-[1rem] tracking-[0.05rem] uppercase font-light max-w-[21rem] text-center leading-[1.1] mb-12 text-[var(--primary)] drop-shadow-md"
-      >
-        {heroTagline}
-      </motion.h5>
+      <motion.div className="relative z-20 flex flex-col items-center gap-3 mb-12">
+        <motion.h5
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 1 }}
+          className="text-[0.8rem] dt:text-[1rem] tracking-[0.05rem] uppercase font-light text-center leading-[1.1] text-[var(--primary)] drop-shadow-md"
+        >
+          {heroTagline}
+        </motion.h5>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1, duration: 1 }}
+          className="text-[0.65rem] dt:text-[0.8rem] tracking-[0.15rem] uppercase font-light text-center text-[#a0a0a0]"
+        >
+          {heroSubline}
+        </motion.p>
+      </motion.div>
     </section>
   );
 };
@@ -69,6 +80,8 @@ const images = [
 
 const ImageTrail = ({ mouseX, mouseY, rotateX, rotateY }) => {
   const ref = useRef(null);
+  const { scrollYProgress } = useScroll();
+  const parallaxY = useTransform(scrollYProgress, [0, 1], [0, 150]);
 
   return (
     <div ref={ref} className="absolute inset-0 z-[5] pointer-events-none overflow-hidden">
@@ -76,20 +89,22 @@ const ImageTrail = ({ mouseX, mouseY, rotateX, rotateY }) => {
         style={{ x: mouseX, y: mouseY, rotateX, rotateY }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] md:w-[25vw] h-[50vh] md:h-[65vh] perspective-1000 preserve-3d"
       >
-        <motion.div
-          className="w-full h-full rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
-          initial={{ height: 0 }}
-          animate={{ height: "100%" }}
-          transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
-        >
-          <motion.img
-            src={images[0]}
-            alt=""
-            className="w-full h-full object-cover"
-            initial={{ scale: 1.5 }}
-            animate={{ scale: 1 }}
+        <motion.div style={{ y: parallaxY }} className="w-full h-full">
+          <motion.div
+            className="w-full h-full rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+            initial={{ height: 0 }}
+            animate={{ height: "100%" }}
             transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
-          />
+          >
+            <motion.img
+              src={images[0]}
+              alt=""
+              className="w-full h-full object-cover"
+              initial={{ scale: 1.5 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
+            />
+          </motion.div>
         </motion.div>
       </motion.div>
     </div>

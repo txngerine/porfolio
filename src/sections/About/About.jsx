@@ -38,7 +38,7 @@ const About = () => {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4, ease: [0.76, 0, 0.24, 1] }}
         >
-          <Button href="#about">More About Me</Button>
+          <Button href="/about-me">More About Me</Button>
         </motion.div>
       </div>
     </section>

@@ -43,8 +43,8 @@ const Contact = () => {
           transition={{ duration: 0.6, delay: 0.5, ease: [0.76, 0, 0.24, 1] }}
           className="mt-4"
         >
-          <Button href="https://calendly.com/">
-            Book a call
+          <Button href="mailto:akshaits4@gmail.com">
+            Send an email
           </Button>
         </motion.div>
       </div>

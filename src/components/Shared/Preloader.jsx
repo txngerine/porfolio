@@ -1,20 +1,29 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+const hellos = [
+  '你好', 'こんにちは', '안녕하세요', 'नमस्ते', 'مرحبا',
+  'Hola', 'Bonjour', 'Ciao', 'Hallo', 'Olá',
+  'Здравствуйте', 'สวัสดี', 'Hej', 'Merhaba', 'Sawubona',
+  'Բարև', 'Mingalaba', 'Xin chào', 'Habari', 'Halló',
+  'Buna', 'Dia dhuit', 'Saluton', 'Bongu', 'Namaskara',
+  'Kamusta', 'Salam', 'Tungjatjeta', 'Salama', 'Privet',
+  'Hello',
+];
+
 const Preloader = () => {
-  const [counter, setCounter] = useState(0);
+  const [index, setIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    let count = 0;
+    let i = 0;
     const interval = setInterval(() => {
-      count += Math.floor(Math.random() * 15) + 5;
-      if (count > 100) count = 100;
-      setCounter(count);
-
-      if (count === 100) {
+      i++;
+      if (i < hellos.length) {
+        setIndex(i);
+      } else {
         clearInterval(interval);
-        setTimeout(() => setIsVisible(false), 500); // Small delay before hiding
+        setTimeout(() => setIsVisible(false), 600);
       }
     }, 100);
 
@@ -29,18 +38,17 @@ const Preloader = () => {
           exit={{ scaleY: 0 }}
           transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
           style={{ transformOrigin: 'top' }}
-          className="fixed top-0 left-0 w-full h-full bg-gradient-to-t from-[#f44e00] to-[#fa7300] text-black z-[5000000] pointer-events-none overflow-hidden"
+          className="fixed top-0 left-0 w-full h-full bg-black text-[#d41b1b] z-[5000000] pointer-events-none overflow-hidden flex items-center justify-center"
         >
-          <div className="absolute right-0 bottom-0 overflow-hidden px-4 md:px-8">
-            <motion.span 
-              initial={{ y: "100%" }}
-              animate={{ y: 0 }}
-              transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
-              className="block text-[40vw] md:text-[25vw] max-sm:text-[60vw] tracking-[-3vw] leading-[0.7] font-light"
-            >
-              {counter}
-            </motion.span>
-          </div>
+          <motion.span
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.06, ease: [0.76, 0, 0.24, 1] }}
+            className="block text-[clamp(2.5rem,18vw,12rem)] tracking-[-0.05em] leading-[0.8] font-light max-w-full px-4 whitespace-nowrap overflow-hidden"
+          >
+            {hellos[index]}
+          </motion.span>
         </motion.div>
       )}
     </AnimatePresence>

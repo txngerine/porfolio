@@ -9,6 +9,9 @@ import Services from './sections/Services/Services';
 import Contact from './sections/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import Preloader from './components/Shared/Preloader';
+import AboutMe from './pages/AboutMe';
+import ProjectsPage from './pages/ProjectsPage';
+import ContactPage from './pages/ContactPage';
 const Portfolio = () => {
   useEffect(() => {
     const lenis = new Lenis({
@@ -55,6 +58,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Portfolio />} />
+        <Route path="/about-me" element={<AboutMe />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Routes>
     </BrowserRouter>
   );
