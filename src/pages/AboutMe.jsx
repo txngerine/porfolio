@@ -110,8 +110,6 @@ function CountUp({ end, suffix = '+' }) {
 
 const AboutMe = () => {
   const mainRef = useRef(null);
-  const storyImgRef = useRef(null);
-  const storyImgInView = useInView(storyImgRef, { once: true, margin: '-10%' });
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -229,58 +227,126 @@ const AboutMe = () => {
                 className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[var(--brand)]/30 to-transparent origin-right"
               />
             </div>
-            <div className="flex flex-col md:flex-row items-start gap-8 md:gap-20">
+            <div className="flex flex-col gap-20 md:gap-32">
+              {/* Row 1: Image left + text right */}
               <motion.div
-                ref={storyImgRef}
-                initial={{ opacity: 0, x: -40 }}
-                animate={storyImgInView ? { opacity: 1, x: 0 } : {}}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-10%' }}
                 transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-                className="w-full md:w-[35%] flex-shrink-0"
+                className="flex flex-col md:flex-row items-center gap-10 md:gap-20"
               >
-                <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] rounded-xl overflow-hidden group">
-                  <div className="absolute inset-0 bg-[url('/images/overlay.webp')] bg-cover bg-center opacity-30 mix-blend-overlay pointer-events-none z-10" />
-                  <motion.img
-                    src="/images/hero.png"
-                    alt="Akshay T.S"
-                    className="w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-105"
-                    initial={{ scale: 1.1 }}
-                    animate={storyImgInView ? { scale: 1 } : {}}
-                    transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[var(--brand)]/20 via-transparent to-transparent z-20" />
-                  <div className="absolute inset-0 rounded-xl ring-1 ring-[var(--brand)]/20 group-hover:ring-[var(--brand)]/40 transition-all duration-700" />
-                  <div className="absolute bottom-4 left-4 z-30">
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={storyImgInView ? { opacity: 1, y: 0 } : {}}
-                      transition={{ duration: 0.6, delay: 0.4 }}
-                      className="text-[0.5rem] tracking-[0.2rem] uppercase font-bold text-white/60"
-                    >
-                      Based in Kochi, Kerala
-                    </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: '-10%' }}
+                  transition={{ duration: 0.8, delay: 0.15, ease: [0.19, 1, 0.22, 1] }}
+                  className="w-full md:w-[40%] flex-shrink-0"
+                >
+                  <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden group">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand)]/5 to-transparent z-10 pointer-events-none" />
+                    <img
+                      src="/images/story.jpg"
+                      alt=""
+                      className="w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 rounded-2xl ring-1 ring-white/10 group-hover:ring-[var(--brand)]/30 transition-all duration-700 pointer-events-none" />
                   </div>
-                </div>
-              </motion.div>
-              <div className="flex-1 space-y-10">
-                {storyParagraphs.map((text, i) => (
+                </motion.div>
+                <div className="flex-1">
                   <motion.div
-                    key={i}
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-10%' }}
-                    transition={{ duration: 0.6, delay: i * 0.15, ease: [0.19, 1, 0.22, 1] }}
-                    className="relative pl-6 border-l border-[#252525] hover:border-[var(--brand)]/40 transition-colors duration-700"
+                    transition={{ duration: 0.6, delay: 0.3, ease: [0.19, 1, 0.22, 1] }}
                   >
-                    <div className="absolute -left-[3px] top-1 w-[5px] h-[5px] rounded-full bg-[var(--brand)] opacity-60" />
-                    <p className="text-[clamp(0.8rem,1.6vw,1.2rem)] font-light leading-[1.6] text-[var(--primary)]">
-                      {text}
+                    <div className="flex items-center gap-3 mb-5">
+                      <span className="text-[0.5rem] tracking-[0.3rem] uppercase font-bold text-[var(--brand)]/60">01</span>
+                      <div className="h-px flex-1 bg-gradient-to-r from-[var(--brand)]/30 to-transparent" />
+                    </div>
+                    <p className="text-[clamp(0.85rem,1.3vw,1.1rem)] font-light leading-[1.9] text-[var(--primary)]/85">
+                      {storyParagraphs[0]}
                     </p>
                   </motion.div>
-                ))}
-              </div>
+                </div>
+              </motion.div>
+
+              {/* Row 2: Text left + image right */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-10%' }}
+                transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+                className="flex flex-col md:flex-row-reverse items-center gap-10 md:gap-20"
+              >
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true, margin: '-10%' }}
+                  transition={{ duration: 0.8, delay: 0.15, ease: [0.19, 1, 0.22, 1] }}
+                  className="w-full md:w-[40%] flex-shrink-0"
+                >
+                  <div className="relative w-full aspect-[4/5] rounded-2xl overflow-hidden group">
+                    <div className="absolute inset-0 bg-gradient-to-br from-[var(--brand)]/5 to-transparent z-10 pointer-events-none" />
+                    <img
+                      src="/images/story-2.jpg"
+                      alt=""
+                      className="w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 rounded-2xl ring-1 ring-white/10 group-hover:ring-[var(--brand)]/30 transition-all duration-700 pointer-events-none" />
+                  </div>
+                </motion.div>
+                <div className="flex-1">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-10%' }}
+                    transition={{ duration: 0.6, delay: 0.3, ease: [0.19, 1, 0.22, 1] }}
+                  >
+                    <div className="flex items-center gap-3 mb-5">
+                      <span className="text-[0.5rem] tracking-[0.3rem] uppercase font-bold text-[var(--brand)]/60">02</span>
+                      <div className="h-px flex-1 bg-gradient-to-r from-[var(--brand)]/30 to-transparent" />
+                    </div>
+                    <p className="text-[clamp(0.85rem,1.3vw,1.1rem)] font-light leading-[1.9] text-[var(--primary)]/85">
+                      {storyParagraphs[1]}
+                    </p>
+                  </motion.div>
+                </div>
+              </motion.div>
+
+              {/* Row 3: Remaining paragraphs full width */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-10%' }}
+                transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+                className="max-w-[48rem] mx-auto"
+              >
+                <div className="flex items-center gap-3 mb-10">
+                  <div className="h-px flex-1 bg-gradient-to-l from-[var(--brand)]/30 to-transparent" />
+                  <span className="text-[0.5rem] tracking-[0.3rem] uppercase font-bold text-[var(--brand)]/60">03</span>
+                  <div className="h-px flex-1 bg-gradient-to-r from-[var(--brand)]/30 to-transparent" />
+                </div>
+                <div className="space-y-10">
+                  {storyParagraphs.slice(2).map((text, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: '-10%' }}
+                      transition={{ duration: 0.6, delay: i * 0.15, ease: [0.19, 1, 0.22, 1] }}
+                    >
+                      <p className="text-[clamp(0.85rem,1.3vw,1.1rem)] font-light leading-[1.9] text-[var(--primary)]/80">
+                        {text}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
             </div>
           </div>
         </section>
+
 
         {/* Stats */}
         <section className="w-full px-4 md:px-8 py-16 sm:py-32 border-t border-[#252525]">

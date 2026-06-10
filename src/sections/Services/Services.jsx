@@ -26,15 +26,73 @@ const services = [
   }
 ];
 
+
+const ServiceCard = ({ service, index, scrollYProgress }) => {
+  const xFinal = (index - 1.5) * 25; // -37.5vw, -12.5vw, 12.5vw, 37.5vw
+  const rotateFinal = (index - 1.5) * 10; // -15deg, -5deg, 5deg, 15deg
+
+  const x = useTransform(scrollYProgress, [0, 1], ["0vw", `${xFinal}vw`]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, rotateFinal]);
+
+  return (
+    <motion.div
+      style={{ x, rotate, xOrigin: "50%", y: "-50%" }}
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[22vw] h-[65vh] group cursor-pointer"
+    >
+      {/* Floating wrapper */}
+      <motion.div
+        animate={{ y: ["-5%", "5%", "-5%"] }}
+        transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: index * 0.2 }}
+        className="w-full h-full relative perspective-1000"
+      >
+        {/* Flipping wrapper (CSS driven) */}
+        <div className="w-full h-full relative preserve-3d transition-transform duration-[800ms] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:[transform:rotateY(180deg)]">
+          {/* Front */}
+          <div className="absolute inset-0 backface-hidden bg-[#131313] rounded-[15px] overflow-hidden">
+            <img 
+              src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop" 
+              className="w-full h-full object-cover opacity-50" 
+              alt="card bg" 
+            />
+          </div>
+          
+          {/* Back */}
+          <div className="absolute inset-0 backface-hidden [transform:rotateY(180deg)] bg-[#131313] rounded-[15px] p-8 flex flex-col justify-between">
+            <div>
+              <h3 className="text-[1.2rem] lg:text-[1.8rem] tracking-[0.08rem] uppercase font-light">{service.title}</h3>
+              <ul className="my-4">
+                {service.items.map((item, i) => (
+                  <li key={i} className="text-[0.7rem] lg:text-[0.9rem] leading-[1] tracking-[0.05rem] uppercase font-light py-3 border-b border-dashed border-[#373737]">
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <h2 className="text-[1.8rem] lg:text-[2.75rem] leading-[0.9] font-light uppercase text-[var(--brand)] text-right">
+              {service.number}
+            </h2>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
 const Services = () => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-10%" });
+  const titleRef = useRef(null);
+  const isInView = useInView(titleRef, { once: true, margin: "-10%" });
+  const containerRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end end"]
+  });
 
   return (
     <section id="services" className="py-24 px-4 md:px-8 bg-[var(--background)] text-[var(--primary)] relative">
       <div className="w-full border-b border-[#252525] pb-8 mb-12 lg:mb-20">
         <motion.div 
-          ref={ref}
+          ref={titleRef}
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
@@ -59,66 +117,16 @@ const Services = () => {
         </div>
       </div>
 
-      <div ref={ref} className="relative h-[200vh] w-full hidden md:block perspective-1000 mt-20">
+      <div ref={containerRef} className="relative h-[200vh] w-full hidden md:block perspective-1000 mt-20">
         <div className="sticky top-0 h-screen w-full flex items-center justify-center">
-          {services.map((service, index) => {
-            // Calculate final fan out positions
-            const xFinal = (index - 1.5) * 25; // -37.5vw, -12.5vw, 12.5vw, 37.5vw
-            const rotateFinal = (index - 1.5) * 10; // -15deg, -5deg, 5deg, 15deg
-
-            // useScroll for scroll linked fan out
-            const { scrollYProgress } = useScroll({
-              target: ref,
-              offset: ["start center", "end end"]
-            });
-
-            const x = useTransform(scrollYProgress, [0, 1], ["0vw", `${xFinal}vw`]);
-            const rotate = useTransform(scrollYProgress, [0, 1], [0, rotateFinal]);
-
-            return (
-              <motion.div
-                key={index}
-                style={{ x, rotate, xOrigin: "50%", y: "-50%" }}
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 w-[22vw] h-[65vh] group cursor-pointer"
-              >
-                {/* Floating wrapper */}
-                <motion.div
-                  animate={{ y: ["-5%", "5%", "-5%"] }}
-                  transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: index * 0.2 }}
-                  className="w-full h-full relative perspective-1000"
-                >
-                  {/* Flipping wrapper (CSS driven) */}
-                  <div className="w-full h-full relative preserve-3d transition-transform duration-[800ms] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:[transform:rotateY(180deg)]">
-                    {/* Front */}
-                    <div className="absolute inset-0 backface-hidden bg-[#131313] rounded-[15px] overflow-hidden">
-                      <img 
-                        src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=600&auto=format&fit=crop" 
-                        className="w-full h-full object-cover opacity-50" 
-                        alt="card bg" 
-                      />
-                    </div>
-                    
-                    {/* Back */}
-                    <div className="absolute inset-0 backface-hidden [transform:rotateY(180deg)] bg-[#131313] rounded-[15px] p-8 flex flex-col justify-between">
-                      <div>
-                        <h3 className="text-[1.2rem] lg:text-[1.8rem] tracking-[0.08rem] uppercase font-light">{service.title}</h3>
-                        <ul className="my-4">
-                          {service.items.map((item, i) => (
-                            <li key={i} className="text-[0.7rem] lg:text-[0.9rem] leading-[1] tracking-[0.05rem] uppercase font-light py-3 border-b border-dashed border-[#373737]">
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                      <h2 className="text-[1.8rem] lg:text-[2.75rem] leading-[0.9] font-light uppercase text-[var(--brand)] text-right">
-                        {service.number}
-                      </h2>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            );
-          })}
+          {services.map((service, index) => (
+            <ServiceCard
+              key={index}
+              service={service}
+              index={index}
+              scrollYProgress={scrollYProgress}
+            />
+          ))}
         </div>
       </div>
 

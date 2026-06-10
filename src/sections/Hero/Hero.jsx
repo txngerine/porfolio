@@ -84,14 +84,14 @@ const ImageTrail = ({ mouseX, mouseY, rotateX, rotateY }) => {
   const parallaxY = useTransform(scrollYProgress, [0, 1], [0, 150]);
 
   return (
-    <div ref={ref} className="absolute inset-0 z-[5] pointer-events-none overflow-hidden">
+    <div ref={ref} className="absolute inset-0 z-[5] pointer-events-none">
       <motion.div
         style={{ x: mouseX, y: mouseY, rotateX, rotateY }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] md:w-[25vw] h-[50vh] md:h-[65vh] perspective-1000 preserve-3d"
       >
         <motion.div style={{ y: parallaxY }} className="w-full h-full">
           <motion.div
-            className="w-full h-full rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+            className="w-full h-full rounded-xl overflow-hidden shadow-[0_30px_80px_rgba(255,255,255,0.08),0_20px_50px_rgba(212,27,27,0.15)]"
             initial={{ height: 0 }}
             animate={{ height: "100%" }}
             transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
