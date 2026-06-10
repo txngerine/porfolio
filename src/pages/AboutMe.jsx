@@ -249,6 +249,8 @@ const AboutMe = () => {
                       src="/images/story.jpg"
                       alt=""
                       className="w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <div className="absolute inset-0 rounded-2xl ring-1 ring-white/10 group-hover:ring-[var(--brand)]/30 transition-all duration-700 pointer-events-none" />
                   </div>
@@ -292,6 +294,8 @@ const AboutMe = () => {
                       src="/images/story-2.jpg"
                       alt=""
                       className="w-full h-full object-cover transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-105"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <div className="absolute inset-0 rounded-2xl ring-1 ring-white/10 group-hover:ring-[var(--brand)]/30 transition-all duration-700 pointer-events-none" />
                   </div>

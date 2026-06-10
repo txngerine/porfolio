@@ -76,6 +76,9 @@ const ImageTrail = () => {
               src="/images/heroimg2.png" 
               style={{ opacity, aspectRatio: '1600/2192' }}
               alt="trail element"
+              loading="eager"
+              fetchpriority="high"
+              decoding="sync"
             />
           );
         })}

@@ -74,6 +74,8 @@ const Projects = () => {
               src={project.image} 
               alt={project.title} 
               className="w-full h-full object-cover transition-transform duration-[800ms] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-110"
+              loading="lazy"
+              decoding="async"
             />
             <div className="absolute top-0 w-full flex flex-col sm:flex-row justify-between p-[1rem] tb:p-[2rem] gap-6 z-10 pointer-events-none">
               <div className="overflow-hidden">
