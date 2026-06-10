@@ -128,4 +128,98 @@
     filter: drop-shadow(0 0 10px var(--brand));
     box-shadow: inset 0 -30px 20px hsla(0,0%,100%,.2);
   }
+  .ImageTrail_content__mP5mu {
+    display: grid;
+    place-items: center;
+  }
+  .ImageTrail_trail__FEu9c {
+    position: relative;
+    display: grid;
+  }
+  .trail__img {
+    width: 25vw;
+    object-fit: cover;
+    position: relative;
+    will-change: transform;
+    grid-area: 1/1/2/2;
+    border-radius: 12px;
+  }
+  @media(max-width:1080px) {
+    .trail__img {
+      width: 30vw;
+    }
+  }
+  @media(max-width:840px) {
+    .trail__img {
+      width: 60vw;
+    }
+  }
+  @media(max-width:600px) {
+    .trail__img {
+      width: 80vw;
+    }
+  }
+  .HeroSection_hero__RIkBF {
+    padding: 2rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: hidden;
+  }
+  @media(max-width:600px) {
+    .HeroSection_hero__RIkBF {
+      padding: 1rem;
+      height: 90vh;
+    }
+  }
+  .HeroSection_hero__RIkBF .HeroSection_tagline__ABpe1 {
+    font-size: 1rem;
+    line-height: 1.1;
+    letter-spacing: .05rem;
+    text-transform: uppercase;
+    font-weight: lighter;
+    max-width: 21rem;
+    width: 100%;
+    text-align: center;
+    color: var(--primary);
+  }
+  @media(max-width:1080px) {
+    .HeroSection_hero__RIkBF .HeroSection_tagline__ABpe1 {
+      font-size: .8rem;
+    }
+  }
+  .HeroSection_hero__RIkBF .HeroSection_marquee__Nyhd4 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    overflow: hidden;
+    display: flex;
+    white-space: nowrap;
+    z-index: -1;
+  }
+  .HeroSection_hero__RIkBF .HeroSection_marquee__Nyhd4 .HeroSection_content__yt03e {
+    font-size: 15vw;
+    letter-spacing: -.8rem;
+    text-transform: uppercase;
+    line-height: 90%;
+    font-family: "PPNeueMontreal-Medium", sans-serif;
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 2rem;
+    color: #131313;
+  }
+  @media(max-width:1080px) {
+    .HeroSection_hero__RIkBF .HeroSection_marquee__Nyhd4 .HeroSection_content__yt03e {
+      font-size: 25vw;
+    }
+  }
+  @media(max-width:600px) {
+    .HeroSection_hero__RIkBF .HeroSection_marquee__Nyhd4 .HeroSection_content__yt03e {
+      font-size: 50vw;
+    }
+  }
 }

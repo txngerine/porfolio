@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useInView, useScroll, useTransform } from 'framer-motion';
+import { motion, useInView, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import Button from '../../components/Buttons/Button';
 import SplitText from '../../components/Shared/SplitText';
 
@@ -28,11 +28,12 @@ const services = [
 
 
 const ServiceCard = ({ service, index, scrollYProgress }) => {
+  const shouldReduceMotion = useReducedMotion();
   const xFinal = (index - 1.5) * 25; // -37.5vw, -12.5vw, 12.5vw, 37.5vw
   const rotateFinal = (index - 1.5) * 10; // -15deg, -5deg, 5deg, 15deg
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0vw", `${xFinal}vw`]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, rotateFinal]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0vw", shouldReduceMotion ? "0vw" : `${xFinal}vw`]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : rotateFinal]);
 
   return (
     <motion.div
@@ -41,7 +42,7 @@ const ServiceCard = ({ service, index, scrollYProgress }) => {
     >
       {/* Floating wrapper */}
       <motion.div
-        animate={{ y: ["-5%", "5%", "-5%"] }}
+        animate={shouldReduceMotion ? {} : { y: ["-5%", "5%", "-5%"] }}
         transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: index * 0.2 }}
         className="w-full h-full relative perspective-1000"
       >

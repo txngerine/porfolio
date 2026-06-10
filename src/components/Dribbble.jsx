@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, useReducedMotion } from 'framer-motion';
 import { staggerContainer, staggerChild } from '../utils/motion';
 import SplitReveal from '../utils/SplitReveal';
 
@@ -11,10 +11,12 @@ const cards = [
 ];
 
 const SplitCard = ({ img, scrollYProgress, offsetX, offsetY, rotate }) => {
-  const x = useTransform(scrollYProgress, [0, 1], [0, offsetX]);
-  const y = useTransform(scrollYProgress, [0, 1], [0, offsetY]);
-  const rot = useTransform(scrollYProgress, [0, 1], [0, rotate]);
-  const opacity = useTransform(scrollYProgress, [0, 0.4, 1], [1, 0.6, 0.25]);
+  const shouldReduceMotion = useReducedMotion();
+
+  const x = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : offsetX]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : offsetY]);
+  const rot = useTransform(scrollYProgress, [0, 1], [0, shouldReduceMotion ? 0 : rotate]);
+  const opacity = useTransform(scrollYProgress, [0, 0.4, 1], [1, 0.6, shouldReduceMotion ? 1 : 0.25]);
 
   return (
     <motion.img
